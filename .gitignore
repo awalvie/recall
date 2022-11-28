@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+recall
 
 # Test binary, built with `go test -c`
 *.test
@@ -15,3 +16,8 @@
 vendor/
 out/
 tmp/
+
+# Data file
+data/
+data.csv
+
