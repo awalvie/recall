@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"log"
 	"os"
 
@@ -16,36 +17,49 @@ const (
 	D Category = "D"
 )
 
-type Person struct {
-	Name        string   `csv:"name"`
-	Phone       string   `csv:"phone"`
-	Email       string   `csv:"email"`
-	Notes       string   `csv:"notes"`
-	LastContact string   `csv:"last_contact"`
-	NextContact string   `csv:"next_contact"`
-	Category    Category `csv:"category"`
+// Record defines a single record in the csv file
+// with each field representing a single column
+type Record struct {
+	Name        string   `csv:"Name"`
+	Phone       string   `csv:"Phone"`
+	Email       string   `csv:"Email"`
+	Notes       string   `csv:"Notes"`
+	LastContact string   `csv:"Last Contact"`
+	NextContact string   `csv:"Next Contact"`
+	Category    Category `csv:"Category"`
 }
 
-// ReadCSV opens and reads a csv files and returns
-// the output as a list of records
-func ReadCSV(path string) ([]*Person, error) {
-	// Open the file on the path
-	// TODO: If file is just created populate the first
-	// 	     line with column titles
-	file, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE, 0644)
-	if err != nil {
-		log.Fatalln("failed to open file", path, err)
+// ReadCSV opens and reads a csv file and returns
+// a list of the Record objects
+func ReadCSV(path string) ([]*Record, error) {
+	var file *os.File
+
+	// Check if file exists
+	_, err := os.Stat(path)
+
+	// If file does not exist create it
+	if errors.Is(err, os.ErrNotExist) {
+		log.Println("file at given path does not exist, creating one")
+
+		// Create the file at the given path
+		file, err = os.Create(path)
+		if err != nil {
+			log.Println("failed to create file at given path", err)
+			return nil, err
+		}
 	}
-	defer file.Close()
 
-	// people will hold all the resocrds in the csv
-	people := []*Person{}
+	// records will hold all the Record objects in the csv
+	records := []*Record{}
 
-	// Unamarshal csv into people struct
-	err = gocsv.UnmarshalFile(file, &people)
+	// Unamarshal csv into the records list
+	// TODO: If file is empty, write the header row at the very top
+	//       before reading from it and do this using error handling
+	err = gocsv.UnmarshalFile(file, &records)
 	if err != nil {
-		log.Fatalln("failed to unmarshal csv file", path, err)
+		log.Println("failed to unamarshal contents of the csv", err)
+		return nil, err
 	}
 
-	return people, nil
+	return records, nil
 }
