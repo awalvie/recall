@@ -4,7 +4,7 @@ VERSION=0.0.1
 .PHONY: build
 ## build: Compile the packages.
 build:
-	@go build -o $(NAME) cmd/${NAME}/main.go
+	@go build -o $(NAME) cmd/main.go
 
 .PHONY: run
 ## run : Run the program
