@@ -44,6 +44,7 @@ func Configure(e *echo.Echo, a *config.App) {
 
 	// Configure routes
 	e.GET("/", handlers.Index)
+	e.GET("/static/:file", handlers.Static)
 }
 
 // ConfigMiddleware adds the config to the context

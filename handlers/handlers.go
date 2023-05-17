@@ -3,6 +3,7 @@ package handlers
 import (
 	"html/template"
 	"log"
+	"net/http"
 	"path/filepath"
 
 	"github.com/awalvie/recall/config"
@@ -25,5 +26,20 @@ func Index(e echo.Context) error {
 		log.Println("error rendering template:", err)
 		return err
 	}
+	return nil
+}
+
+// Static is the handler for serving all static files
+func Static(e echo.Context) error {
+	// Get app config from the Context
+	a := e.Get("app").(*config.App)
+
+	// Get file from the context
+	f := e.Param("file")
+	f = filepath.Clean(filepath.Join(a.Config.Dirs.Static, f))
+
+	http.ServeFile(e.Response().Writer, e.Request(), f)
+	log.Println("served file:", f)
+
 	return nil
 }
