@@ -34,7 +34,7 @@ func main() {
 	e := echo.New()
 
 	// Configure echo server
-	routes.Configure(e)
+	routes.Configure(e, c)
 
 	// Configure server address
 	addr := fmt.Sprintf("%s:%d", c.Server.Host, c.Server.Port)
