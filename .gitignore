@@ -19,5 +19,5 @@ tmp/
 
 # Data file
 data/
-data.csv
-
+sqlite.db
+config.yaml
