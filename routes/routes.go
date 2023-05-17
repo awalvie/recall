@@ -13,6 +13,7 @@ import (
 func Configure(e *echo.Echo, c *config.Config) {
 	// Hide the stupid banner
 	e.HideBanner = true
+	e.HidePort = true
 
 	// Configure middleware
 

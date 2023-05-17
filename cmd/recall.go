@@ -40,5 +40,6 @@ func main() {
 	addr := fmt.Sprintf("%s:%d", c.Server.Host, c.Server.Port)
 
 	// Start HTTP server
+	log.Println("starting server on", addr)
 	e.Start(addr)
 }
