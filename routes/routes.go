@@ -10,15 +10,15 @@ import (
 )
 
 // Configure configures the echo server
-func Configure(e *echo.Echo, c *config.Config) {
+func Configure(e *echo.Echo, a *config.App) {
 	// Hide the stupid banner
 	e.HideBanner = true
 	e.HidePort = true
 
-	// Configure middleware
+	// Middleware configuration
 
 	// Pass app config to handlers
-	e.Use(ConfigMiddleware(*c))
+	e.Use(ConfigMiddleware(a))
 
 	// Log requests
 	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
@@ -47,11 +47,11 @@ func Configure(e *echo.Echo, c *config.Config) {
 }
 
 // ConfigMiddleware adds the config to the context
-func ConfigMiddleware(config config.Config) echo.MiddlewareFunc {
+func ConfigMiddleware(app *config.App) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			// Add the config to the context
-			c.Set("config", config)
+			c.Set("app", app)
 
 			// Call the next handler in the chain
 			return next(c)

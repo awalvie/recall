@@ -35,6 +35,7 @@ func Read(s string) (*Config, error) {
 		return nil, fmt.Errorf("parsing config: %w", err)
 	}
 
+	// Get absolute paths for templates and static
 	if c.Dirs.Templates, err = filepath.Abs(c.Dirs.Templates); err != nil {
 		return nil, fmt.Errorf("getting absolute path for templates: %w", err)
 	}
