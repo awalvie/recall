@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/awalvie/recall/config"
+	"github.com/awalvie/recall/models"
 	"github.com/awalvie/recall/routes"
 	"github.com/labstack/echo/v4"
 	"gorm.io/driver/sqlite"
@@ -37,6 +38,13 @@ func main() {
 	db, err := gorm.Open(sqlite.Open(dbFile), &gorm.Config{})
 	if err != nil {
 		log.Fatalln("error connecting to database:", err)
+	}
+
+	// Migrate database
+	if err := db.AutoMigrate(
+		&models.Contact{},
+	); err != nil {
+		log.Fatalln("error migrating database:", err)
 	}
 
 	// Create app config

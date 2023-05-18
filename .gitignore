@@ -21,3 +21,4 @@ tmp/
 data/
 sqlite.db
 config.yaml
+.DS_Store

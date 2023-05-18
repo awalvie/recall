@@ -45,6 +45,14 @@ func Configure(e *echo.Echo, a *config.App) {
 	// Configure routes
 	e.GET("/", handlers.Index)
 	e.GET("/static/:file", handlers.Static)
+
+	// API routes
+	api := e.Group("/api")
+	api.GET("/contacts", handlers.GetContacts)
+	api.POST("/contacts", handlers.CreateContact)
+	api.GET("/contacts/:id", handlers.GetContact)
+	api.PUT("/contacts/:id", handlers.UpdateContact)
+	api.DELETE("/contacts/:id", handlers.DeleteContact)
 }
 
 // ConfigMiddleware adds the config to the context
