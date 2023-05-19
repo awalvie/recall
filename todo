@@ -1,7 +1,7 @@
 todo
 ----
 
-- Required
+REQUIRED
 
 - [ ] Add validators to create and update contacts method
 - [ ] Add basic authentication
@@ -10,6 +10,6 @@ todo
 - [ ] Add pagination to the contacts page
 - [ ] Improve the UI
 
-- Nice to have
+FEATURES
 
 - [ ] Some form of validation that the contact has been contacted
