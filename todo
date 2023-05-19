@@ -1,0 +1,15 @@
+todo
+----
+
+- Required
+
+- [ ] Add validators to create and update contacts method
+- [ ] Add basic authentication
+- [ ] Add support for sending emails
+- [ ] Add support for updating and creating contacts from the contacts page
+- [ ] Add pagination to the contacts page
+- [ ] Improve the UI
+
+- Nice to have
+
+- [ ] Some form of validation that the contact has been contacted
