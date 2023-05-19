@@ -45,6 +45,7 @@ func Configure(e *echo.Echo, a *config.App) {
 	// Configure routes
 	e.GET("/", handlers.Index)
 	e.GET("/static/:file", handlers.Static)
+	e.GET("/contacts", handlers.Contacts)
 
 	// API routes
 	api := e.Group("/api")
