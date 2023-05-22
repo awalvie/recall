@@ -17,6 +17,7 @@ func GetContacts(e echo.Context) error {
 	// Get all contacts
 	var contacts []models.Contact
 	db.Find(&contacts)
+	e.Logger().Info("got contacts:", contacts)
 	return e.JSON(http.StatusOK, contacts)
 }
 
@@ -28,6 +29,7 @@ func GetContact(e echo.Context) error {
 	// Get the ID from the URL
 	id, err := strconv.Atoi(e.Param("id"))
 	if err != nil {
+		e.Logger().Error(err)
 		return e.String(http.StatusBadRequest, "Invalid ID")
 	}
 
@@ -35,9 +37,11 @@ func GetContact(e echo.Context) error {
 	var contact models.Contact
 	result := db.First(&contact, id)
 	if result.Error != nil {
+		e.Logger().Error(result.Error)
 		return e.String(http.StatusNotFound, "Contact not found")
 	}
 
+	e.Logger().Info("got contact:", contact)
 	return e.JSON(http.StatusOK, contact)
 }
 
@@ -49,10 +53,12 @@ func CreateContact(e echo.Context) error {
 
 	contact := new(models.Contact)
 	if err := e.Bind(contact); err != nil {
+		e.Logger().Error(err)
 		return e.String(http.StatusBadRequest, "Invalid data")
 	}
 
 	db.Create(&contact)
+	e.Logger().Info("created contact:", contact)
 	return e.JSON(http.StatusCreated, contact)
 }
 
@@ -65,6 +71,7 @@ func UpdateContact(e echo.Context) error {
 	// Get the ID from the URL
 	id, err := strconv.Atoi(e.Param("id"))
 	if err != nil {
+		e.Logger().Error(err)
 		return e.String(http.StatusBadRequest, "Invalid ID")
 	}
 
@@ -72,14 +79,17 @@ func UpdateContact(e echo.Context) error {
 	contact := new(models.Contact)
 	result := db.First(&contact, id)
 	if result.Error != nil {
+		e.Logger().Error(result.Error)
 		return e.String(http.StatusNotFound, "Contact not found")
 	}
 
 	if err := e.Bind(contact); err != nil {
+		e.Logger().Error(err)
 		return e.String(http.StatusBadRequest, "Invalid data")
 	}
 
 	db.Save(&contact)
+	e.Logger().Info("updated contact:", contact)
 	return e.JSON(http.StatusOK, contact)
 }
 
@@ -92,6 +102,7 @@ func DeleteContact(e echo.Context) error {
 	// Get the ID from the URL
 	id, err := strconv.Atoi(e.Param("id"))
 	if err != nil {
+		e.Logger().Error(err)
 		return e.String(http.StatusBadRequest, "Invalid ID")
 	}
 
@@ -99,9 +110,11 @@ func DeleteContact(e echo.Context) error {
 	contact := new(models.Contact)
 	result := db.First(&contact, id)
 	if result.Error != nil {
+		e.Logger().Error(result.Error)
 		return e.String(http.StatusNotFound, "Contact not found")
 	}
 
 	db.Delete(&contact)
+	e.Logger().Info("deleted contact:", contact)
 	return e.NoContent(http.StatusNoContent)
 }
