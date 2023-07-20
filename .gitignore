@@ -22,3 +22,6 @@ data/
 sqlite.db
 config.yaml
 .DS_Store
+
+# Ignore current config file
+config.yaml
