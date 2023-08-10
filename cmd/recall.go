@@ -13,11 +13,13 @@ import (
 	"gorm.io/gorm"
 )
 
+// init runs before main
 func init() {
 	// Configure logger flags
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 }
 
+// main is the entrypoint for the application
 func main() {
 	var cfg, dbFile string
 	var err error
