@@ -5,4 +5,6 @@ server:
 dirs:
   templates: ./templates
   static: ./static
-
+auth:
+  username: user
+  password: pass

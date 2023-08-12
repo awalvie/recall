@@ -73,3 +73,23 @@ func Contacts(e echo.Context) error {
 	}
 	return nil
 }
+
+// Login is the handler for serving the login page
+func Login(e echo.Context) error {
+	// Get app config from the context
+	a := e.Get("app").(*config.App)
+
+	// Get the template path
+	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
+
+	// Parse the Templates
+	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the Templates
+	if err := t.ExecuteTemplate(e.Response().Writer, "login", nil); err != nil {
+		log.Println("error rendering template:", err)
+		return err
+	}
+	return nil
+
+}

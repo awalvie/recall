@@ -19,6 +19,10 @@ type Config struct {
 		Templates string `yaml:"templates"`
 		Static    string `yaml:"static"`
 	} `yaml:"dirs"`
+	Auth struct {
+		Username string `yaml:"username"`
+		Password string `yaml:"password"`
+	}
 }
 
 // Read reads a YAML config file and returns a Config struct

@@ -18,3 +18,4 @@ REQUIRED
 FEATURES
 
 - [ ] Some form of validation that the contact has been contacted
+- [ ] Add support for login
