@@ -43,10 +43,11 @@ func Configure(e *echo.Echo, a *config.App) {
 	e.Use(middleware.Recover())
 
 	// Configure routes
-	e.GET("/", handlers.Index)
-	e.GET("/static/:file", handlers.Static)
-	e.GET("/contacts", handlers.Contacts)
-	e.GET("/login", handlers.Login)
+
+	// Routes for rendering pages
+	e.GET("/", handlers.IndexPage)
+	e.GET("/login", handlers.LoginPage)
+	e.GET("/static/:file", handlers.StaticFiles)
 
 	// API routes
 	api := e.Group("/api")
