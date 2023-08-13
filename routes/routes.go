@@ -2,14 +2,16 @@ package routes
 
 import (
 	"log"
+	"net/http"
 
+	"github.com/awalvie/recall/auth"
 	"github.com/awalvie/recall/config"
 	"github.com/awalvie/recall/handlers"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
-// Configure configures the echo server
+// Configure sets up the routes and middlwares for the application
 func Configure(e *echo.Echo, a *config.App) {
 	// Hide the stupid banner
 	e.HideBanner = true
@@ -17,8 +19,8 @@ func Configure(e *echo.Echo, a *config.App) {
 
 	// Middleware configuration
 
-	// Pass app config to handlers
-	e.Use(AppConfigMiddleware(a))
+	// Recover from panics
+	e.Use(middleware.Recover())
 
 	// Log requests
 	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
@@ -39,15 +41,21 @@ func Configure(e *echo.Echo, a *config.App) {
 		},
 	}))
 
-	// Recover from panics
-	e.Use(middleware.Recover())
+	// Pass app config to handlers
+	e.Use(AppConfigMiddleware(a))
+
+	// Add auth middleware
+	e.Use(AuthMiddlware(a))
 
 	// Configure routes
-
-	// Routes for rendering pages
+	// Page Routes
 	e.GET("/", handlers.IndexPage)
-	e.GET("/login", handlers.LoginPage)
 	e.GET("/static/:file", handlers.StaticFiles)
+
+	// Auth routes
+	e.GET("/login", handlers.LoginPage)
+	e.GET("/logout", handlers.Logout)
+	e.POST("/login", handlers.Login)
 
 	// API routes
 	api := e.Group("/api")
@@ -64,6 +72,32 @@ func AppConfigMiddleware(app *config.App) echo.MiddlewareFunc {
 		return func(c echo.Context) error {
 			// Add the config to the context
 			c.Set("app", app)
+
+			// Call the next handler in the chain
+			return next(c)
+		}
+	}
+}
+
+// AuthMiddleware does the following:
+// 1. Checks if the request is being made to a public page
+// 2. If not, check if the user is authenticated
+// 3. If not, redirect to the login page
+func AuthMiddlware(app *config.App) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+
+			// Check if request is being made to a public page
+			if auth.IsPublic(c.Path()) {
+				log.Println("public route: ", c.Path())
+				return next(c)
+			}
+
+			// Check if the user is authenticated
+			if !auth.IsAuthenticated(c) {
+				// Redirect to the login page
+				return c.Redirect(http.StatusFound, "/login")
+			}
 
 			// Call the next handler in the chain
 			return next(c)

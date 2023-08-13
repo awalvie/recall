@@ -3,6 +3,7 @@ module github.com/awalvie/recall
 go 1.17
 
 require (
+	github.com/davecgh/go-spew v1.1.1
 	github.com/labstack/echo/v4 v4.10.2
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/sqlite v1.5.0
