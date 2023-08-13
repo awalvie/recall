@@ -49,6 +49,10 @@ func Configure(e *echo.Echo, a *config.App) {
 	e.GET("/login", handlers.LoginPage)
 	e.GET("/static/:file", handlers.StaticFiles)
 
+	// Routes for handling authentication
+	e.POST("/login", handlers.Login)
+	e.POST("/logout", handlers.Logout)
+
 	// API routes
 	api := e.Group("/api")
 	api.GET("/contacts", handlers.GetContacts)
