@@ -18,7 +18,7 @@ func Configure(e *echo.Echo, a *config.App) {
 	// Middleware configuration
 
 	// Pass app config to handlers
-	e.Use(ConfigMiddleware(a))
+	e.Use(AppConfigMiddleware(a))
 
 	// Log requests
 	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
@@ -62,8 +62,8 @@ func Configure(e *echo.Echo, a *config.App) {
 	api.DELETE("/contacts/:id", handlers.DeleteContact)
 }
 
-// ConfigMiddleware adds the config to the context
-func ConfigMiddleware(app *config.App) echo.MiddlewareFunc {
+// AppConfigMiddleware adds the config to the context
+func AppConfigMiddleware(app *config.App) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			// Add the config to the context
