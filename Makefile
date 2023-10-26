@@ -1,6 +1,8 @@
 NAME=recall
 VERSION=0.0.1
 
+.DEFAULT_GOAL := help
+
 .PHONY: build
 ## build: Compile the packages.
 build:
@@ -28,8 +30,8 @@ watch:
 
 .PHONY: help
 all: help
-# help: show this help message
-help: makefile
+## help: show this help message
+help: Makefile
 	@echo
 	@echo " Choose a command to run:"
 	@echo

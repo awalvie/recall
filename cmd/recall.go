@@ -25,6 +25,12 @@ func main() {
 	var err error
 
 	// Configure CLI flags
+	// Show help by default if no flags are passed
+	flag.Usage = func() {
+		fmt.Println("Usage: recall [options]")
+		flag.PrintDefaults()
+	}
+
 	flag.StringVar(&cfg, "config", "./config.yaml", "path to config file")
 	flag.StringVar(&dbFile, "database", "./sqlite.db", "path to database file")
 	flag.Parse()
