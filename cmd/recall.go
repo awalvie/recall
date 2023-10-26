@@ -25,15 +25,20 @@ func main() {
 	var err error
 
 	// Configure CLI flags
+	flag.StringVar(&cfg, "config", "./config.yaml", "path to config file")
+	flag.StringVar(&dbFile, "database", "./sqlite.db", "path to database file")
+	flag.Parse()
+
 	// Show help by default if no flags are passed
 	flag.Usage = func() {
 		fmt.Println("Usage: recall [options]")
 		flag.PrintDefaults()
 	}
 
-	flag.StringVar(&cfg, "config", "./config.yaml", "path to config file")
-	flag.StringVar(&dbFile, "database", "./sqlite.db", "path to database file")
-	flag.Parse()
+	if len(flag.Args()) == 0 {
+		flag.Usage()
+		return
+	}
 
 	// Read config file
 	c, err := config.Read(cfg)
