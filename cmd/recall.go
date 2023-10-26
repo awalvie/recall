@@ -29,17 +29,6 @@ func main() {
 	flag.StringVar(&dbFile, "database", "./sqlite.db", "path to database file")
 	flag.Parse()
 
-	// Show help by default if no flags are passed
-	flag.Usage = func() {
-		fmt.Println("Usage: recall [options]")
-		flag.PrintDefaults()
-	}
-
-	if len(flag.Args()) == 0 {
-		flag.Usage()
-		return
-	}
-
 	// Read config file
 	c, err := config.Read(cfg)
 	if err != nil {
