@@ -3,7 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Add contacts page
 - [ ] Improve login page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for sending emails
@@ -19,5 +18,6 @@ REFACTOR
 
 DONE
 
+- [X] Add contacts page
 - [X] Add basic authentication
 - [X] Add barebones index page
