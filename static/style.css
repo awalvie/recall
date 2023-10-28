@@ -1,0 +1,48 @@
+:root {
+    --light: #f4f4f4;
+    --sans-font: "InterVar", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+    --display-font: "InterDisplay", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+    --mono-font: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+}
+
+html {
+    background: var(--light);
+    font-family: var(--sans-font);
+    -webkit-text-size-adjust: none;
+}
+
+nav {
+    text-align: center;
+}
+
+/* Style the navbar menu */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style the menu items */
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Style the links within the menu items */
+nav li a {
+    font-size: 25px;
+    /* Adjust the font size to your preference */
+    text-decoration: none;
+    /* Remove underlines from links */
+}
+
+/* Custome Classes */
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    text-align: center;
+    padding: 10%;
+    font-size: 100px;
+}
