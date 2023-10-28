@@ -1,16 +1,23 @@
 todo
 ----
 
-MODIFY
-
-- [ ] Make notes a separate table so that individual notes can be added per contact
-- [ ] Rename Contact -> Category to Frequency
-
 FEATURES
 
+- [ ] Add contacts page
+- [ ] Improve login page
 - [ ] Add validators to create and update contacts method
-- [ ] Add basic authentication
 - [ ] Add support for sending emails
 - [ ] Add support for updating and creating contacts from the contacts page
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
+
+REFACTOR
+
+- [ ] Make notes a separate table so that individual notes can be added per contact
+- [ ] Rename Contact -> Category to Frequency
+
+
+DONE
+
+- [X] Add basic authentication
+- [X] Add barebones index page
