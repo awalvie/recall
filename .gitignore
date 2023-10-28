@@ -5,6 +5,7 @@
 *.so
 *.dylib
 recall
+dummy
 
 # Test binary, built with `go test -c`
 *.test
