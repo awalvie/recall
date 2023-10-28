@@ -3,6 +3,7 @@ module github.com/awalvie/recall
 go 1.17
 
 require (
+	github.com/go-faker/faker/v4 v4.2.0
 	github.com/labstack/echo/v4 v4.10.2
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/sqlite v1.5.0
@@ -10,7 +11,6 @@ require (
 )
 
 require (
-	github.com/go-faker/faker/v4 v4.2.0 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
