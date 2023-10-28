@@ -1,0 +1,39 @@
+{{ define "contacts"}}
+<html>
+<!--Head-->
+{{ template "head" . }}
+<!--Navigation Bar-->
+{{ template "navbar" . }}
+<!--Main Page-->
+<main>
+    <h1>Contact List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Category</th>
+            <th>Last Contact</th>
+            <th>Next Contact</th>
+            <th>Notes</th>
+        </tr>
+        {{range .}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.FirstName}}</td>
+            <td>{{.LastName}}</td>
+            <td>{{.Email}}</td>
+            <td>{{.Phone}}</td>
+            <td>{{.Category}}</td>
+            <td>{{.LastContact.Format "2006-01-02"}}</td>
+            <td>{{.NextContact.Format "2006-01-02"}}</td>
+            <td>{{.Notes}}</td>
+        </tr>
+        {{end}}
+    </table>
+</main>
+
+</html>
+{{ end }}

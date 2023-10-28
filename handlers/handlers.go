@@ -1,12 +1,16 @@
 package handlers
 
 import (
+	"encoding/json"
 	"html/template"
+	"io"
 	"log"
 	"net/http"
 	"path/filepath"
+	"strconv"
 
 	"github.com/awalvie/recall/config"
+	"github.com/awalvie/recall/models"
 	"github.com/labstack/echo/v4"
 )
 
@@ -27,6 +31,68 @@ func IndexPage(e echo.Context) error {
 		log.Println("error rendering template:", err)
 		return err
 	}
+	return nil
+}
+
+func ContactsPage(e echo.Context) error {
+	// Get the config from the context
+	a := e.Get("app").(*config.App)
+
+	// Get cookie from the context
+	cookie, err := e.Cookie("auth")
+	if err != nil {
+		log.Println("error getting cookie:", err)
+		return err
+	}
+
+	// Bulid url for /api/contacts
+	url := "http://" + a.Config.Server.Host + ":" + strconv.Itoa(a.Config.Server.Port) + "/api/contacts"
+
+	// Create a new request object
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Println("error creating request:", err)
+		return err
+	}
+
+	// Set the cookie in the request
+	req.AddCookie(cookie)
+
+	// Make the http request
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Println("error getting contacts:", err)
+		return err
+	}
+
+	// Read the Response
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("error reading response:", err)
+		return err
+	}
+
+	// Unmarshal body into a slice of contacts
+	var contacts []models.Contact
+	err = json.Unmarshal(body, &contacts)
+	if err != nil {
+		log.Println("error unmarshaling response:", err)
+		return err
+	}
+
+	// Get the template path
+	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
+
+	// Parse the Templates
+	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the Templates
+	if err := t.ExecuteTemplate(e.Response().Writer, "contacts", contacts); err != nil {
+		log.Println("error rendering template:", err)
+		return err
+	}
+
 	return nil
 }
 
