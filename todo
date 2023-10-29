@@ -3,7 +3,8 @@ todo
 
 FEATURES
 
-- [ ] Improve login page
+- [ ] Add an error page
+- [ ] Make dashboard redirect to login page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for sending emails
 - [ ] Add support for updating and creating contacts from the contacts page
@@ -14,7 +15,6 @@ REFACTOR
 
 - [ ] Make notes a separate table so that individual notes can be added per contact
 - [ ] Rename Contact -> Category to Frequency
-
 
 DONE
 
