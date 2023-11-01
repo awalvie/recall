@@ -3,7 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Add an error page
 - [ ] Make dashboard redirect to login page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for sending emails
@@ -21,3 +20,4 @@ DONE
 - [X] Add contacts page
 - [X] Add basic authentication
 - [X] Add barebones index page
+- [X] Add an error page
