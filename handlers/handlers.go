@@ -141,6 +141,12 @@ func StaticFiles(e echo.Context) error {
 	return nil
 }
 
+// DashboardPage redirects to /
+func DashboardPage(e echo.Context) error {
+	e.Redirect(http.StatusFound, "/")
+	return nil
+}
+
 // PageNotFound renders a 404 page when a url that does
 // not exist is accessed
 func PageNotFound(err error, e echo.Context) {
