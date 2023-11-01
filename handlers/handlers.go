@@ -140,3 +140,21 @@ func StaticFiles(e echo.Context) error {
 
 	return nil
 }
+
+// PageNotFound renders a 404 page when a url that does
+// not exist is accessed
+func PageNotFound(err error, e echo.Context) {
+	// Get app config from the Context
+	a := e.Get("app").(*config.App)
+
+	// Get the template path
+	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
+
+	// Parse the templates
+	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the templates
+	if err := t.ExecuteTemplate(e.Response().Writer, "404", nil); err != nil {
+		log.Println("error rendering template:", err)
+	}
+}

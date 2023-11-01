@@ -47,6 +47,9 @@ func Configure(e *echo.Echo, a *config.App) {
 	// Add auth middleware
 	e.Use(AuthMiddlware(a))
 
+	// Add custom error handler
+	e.HTTPErrorHandler = handlers.PageNotFound
+
 	// Configure routes
 	// Page Routes
 	e.GET("/", handlers.IndexPage)
