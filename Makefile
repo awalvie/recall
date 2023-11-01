@@ -26,7 +26,7 @@ deps:
 .PHONY: watch
 ## watch: Reload the app whenever the source changes
 watch:
-	@which reflex > /dev/null || (go get github.com/cespare/reflex)
+	@which reflex > /dev/null || (go install github.com/cespare/reflex@latest)
 	reflex -s -r '\.go$$' make run
 
 .PHONY: help
