@@ -3,7 +3,8 @@ todo
 
 FEATURES
 
-- [ ] Make dashboard redirect to login page
+- [ ] Add static page for "add contact" with a form that adds a contact
+- [ ] Add logout page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for sending emails
 - [ ] Add support for updating and creating contacts from the contacts page
@@ -21,3 +22,4 @@ DONE
 - [X] Add basic authentication
 - [X] Add barebones index page
 - [X] Add an error page
+- [X] Make dashboard redirect to login page
