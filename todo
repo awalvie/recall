@@ -3,7 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Add static page for "add contact" with a form that adds a contact
 - [ ] Add logout page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for sending emails
@@ -16,10 +15,17 @@ REFACTOR
 - [ ] Make notes a separate table so that individual notes can be added per contact
 - [ ] Rename Contact -> Category to Frequency
 
+FIX
+
+- [ ] When a new contact is created the LastContact date is set to 01-01-0001, basically
+  they've never been contacted. Don't show this in the UI
+
 DONE
 
+- [X] Add validdtaors to create contacts method
 - [X] Add contacts page
 - [X] Add basic authentication
 - [X] Add barebones index page
 - [X] Add an error page
 - [X] Make dashboard redirect to login page
+- [X] Add static page for "add contact" with a form that adds a contact
