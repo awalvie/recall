@@ -9,8 +9,7 @@ import (
 type Contact struct {
 	gorm.Model
 	ID          uint   `gorm:"primaryKey" faker:"oneof: 1,2",unique`
-	FirstName   string `faker:"first_name"`
-	LastName    string `faker:"last_name"`
+	Name        string `faker:"name"`
 	Email       string `faker:"email"`
 	Phone       string `faker:"phone_number"`
 	Category    string `faker:"oneof: A, B, C, D"`
