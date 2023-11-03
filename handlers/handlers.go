@@ -164,3 +164,24 @@ func PageNotFound(err error, e echo.Context) {
 		log.Println("error rendering template:", err)
 	}
 }
+
+// AddContactPage renders a page for adding a contact
+// with a form that make a POST call to /api/contacts and
+// adds a contact to the database
+func AddContactPage(e echo.Context) error {
+	// Get app config from the Context
+	a := e.Get("app").(*config.App)
+
+	// Get the template path
+	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
+
+	// Parse the templates
+	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the templates
+	if err := t.ExecuteTemplate(e.Response().Writer, "add-contact", nil); err != nil {
+		log.Println("error rendering template:", err)
+	}
+
+	return nil
+}

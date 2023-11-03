@@ -57,6 +57,14 @@ func CreateContact(e echo.Context) error {
 		return e.String(http.StatusBadRequest, "Invalid data")
 	}
 
+	err := contact.Validate()
+	if err != nil {
+		e.Logger().Error(err)
+		return e.String(http.StatusBadRequest, "Invalid data")
+	}
+
+	contact.NextContact = contact.GetNextContactDate()
+
 	db.Create(&contact)
 	e.Logger().Info("created contact:", contact)
 	return e.JSON(http.StatusCreated, contact)
