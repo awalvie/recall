@@ -3,7 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Add logout page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for sending emails
 - [ ] Add support for updating and creating contacts from the contacts page
@@ -22,6 +21,7 @@ FIX
 
 DONE
 
+- [X] Add logout page
 - [X] Add validdtaors to create contacts method
 - [X] Add contacts page
 - [X] Add basic authentication
