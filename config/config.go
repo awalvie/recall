@@ -23,6 +23,13 @@ type Config struct {
 		Username string `yaml:"username"`
 		Password string `yaml:"password"`
 	}
+	Mail struct {
+		Host     string `yaml:"host"`
+		Port     int    `yaml:"port"`
+		Username string `yaml:"username"`
+		Password string `yaml:"password"`
+		TLS      bool   `yaml:"tls"`
+	}
 }
 
 // Read reads a YAML config file and returns a Config struct

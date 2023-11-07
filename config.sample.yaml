@@ -8,3 +8,9 @@ dirs:
 auth:
   username: user
   password: pass
+mail:
+  host: mail.example.com
+  port: 25
+  username: foo@bar.com
+  password: foobar
+  tls: true

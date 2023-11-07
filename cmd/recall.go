@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/awalvie/recall/config"
+	"github.com/awalvie/recall/mail"
 	"github.com/awalvie/recall/models"
 	"github.com/awalvie/recall/routes"
 	"github.com/labstack/echo/v4"
@@ -54,6 +55,17 @@ func main() {
 		Config: c,
 		DB:     db,
 	}
+
+	// Initialize mail server
+	mailServer := mail.Server{
+		Host:     c.Mail.Host,
+		Port:     c.Mail.Port,
+		Username: c.Mail.Username,
+		Password: c.Mail.Password,
+		TLS:      c.Mail.TLS,
+	}
+
+	go mailServer.Start(&app)
 
 	// Configure HTTP server
 	e := echo.New()
