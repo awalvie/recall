@@ -66,3 +66,11 @@ func (c *Contact) GetNextContactDate() time.Time {
 	}
 	return nextContact
 }
+
+func GetContactsToday(db *gorm.DB) ([]Contact, error) {
+	// Get all contacts with next contact date as today
+	var contacts []Contact
+	today := time.Now().Format("2006-01-02")
+	db.Where("DATE(next_contact) = ?", today).Find(&contacts)
+	return contacts, nil
+}

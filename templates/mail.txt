@@ -1,0 +1,10 @@
+{{ define "email" }}
+To: {{.To}}
+Subject: {{.Subject}}
+
+This is a test email sent via Go and net/smtp using templating.
+
+Best regards,
+Your Name
+{{ end }}
+

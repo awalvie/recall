@@ -24,11 +24,13 @@ type Config struct {
 		Password string `yaml:"password"`
 	}
 	Mail struct {
-		Host     string `yaml:"host"`
-		Port     int    `yaml:"port"`
-		Username string `yaml:"username"`
-		Password string `yaml:"password"`
-		TLS      bool   `yaml:"tls"`
+		Host     string   `yaml:"host"`
+		Port     int      `yaml:"port"`
+		Username string   `yaml:"username"`
+		Password string   `yaml:"password"`
+		TLS      bool     `yaml:"tls"`
+		From     string   `yaml:"from"`
+		To       []string `yaml:"to"`
 	}
 }
 

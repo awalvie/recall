@@ -14,3 +14,6 @@ mail:
   username: foo@bar.com
   password: foobar
   tls: true
+  from: foo@bar.com
+  to:
+    - foo@bar.com
