@@ -4,7 +4,9 @@ todo
 FEATURES
 
 - [ ] Add support for sending emails
-	- [ ] Generate the email template from contact list
+	- [ ] Figure out why the to field shows up in bcc
+	- [ ] Figure out why subject doesn't show up on gmail
+	- [X] Send emails using a go template
 	- [X] Get all contacts that need to be contacted from db
 	- [X] Run an infinite `for` loop that runs once every 24 hours
 	- [X] Setup a server `Start()` function that runs in a goroutine
