@@ -69,11 +69,15 @@ func (s *Server) Start(a *config.App) {
 		log.Println("error executing template", err)
 	}
 
+	// Remove the leading new line
+	emailBodyTrim := bytes.TrimLeft(emailBody.Bytes(), "\n")
+
 	// Send email
-	err = smtp.SendMail(addr, auth, a.Config.Mail.From, a.Config.Mail.To, &emailBody)
+	err = smtp.SendMail(addr, auth, a.Config.Mail.From, a.Config.Mail.To, bytes.NewReader(emailBodyTrim))
 	if err != nil {
 		log.Println("error sending mail", err)
+	} else {
+		log.Println("mail sent successfully")
 	}
-	log.Println("email sent")
 
 }
