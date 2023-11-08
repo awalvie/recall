@@ -19,6 +19,7 @@ FEATURES
 - [ ] Add support for updating and creating contacts from the contacts page
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
+- [ ] Show rendered email template on settings page
 
 REFACTOR
 
