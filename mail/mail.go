@@ -29,7 +29,6 @@ func (s *Server) Start(a *config.App) {
 	if err != nil {
 		log.Println("error getting contacts to be contacted today", err)
 	}
-	log.Println("contacts to be contacted today", contacts)
 
 	// Generate email from template
 	// Get the template path
@@ -40,13 +39,15 @@ func (s *Server) Start(a *config.App) {
 
 	// Generate struct to pass to the template
 	data := struct {
-		To      []string
-		From    string
-		Subject string
+		To       []string
+		From     string
+		Subject  string
+		Contacts []models.Contact
 	}{
-		To:      a.Config.Mail.To,
-		From:    a.Config.Mail.From,
-		Subject: "Damn, go templates are awesome!",
+		To:       a.Config.Mail.To,
+		From:     a.Config.Mail.From,
+		Subject:  a.Config.Mail.Subject,
+		Contacts: contacts,
 	}
 
 	// Execute the template
@@ -55,6 +56,8 @@ func (s *Server) Start(a *config.App) {
 	if err != nil {
 		log.Println("error executing template", err)
 	}
+
+	log.Println(emailBody.String())
 
 	// Remove the leading new line
 	emailBodyTrim := bytes.TrimLeft(emailBody.Bytes(), "\n")

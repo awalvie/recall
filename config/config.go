@@ -31,6 +31,7 @@ type Config struct {
 		TLS      bool     `yaml:"tls"`
 		From     string   `yaml:"from"`
 		To       []string `yaml:"to"`
+		Subject  string   `yaml:"subject"`
 	}
 }
 

@@ -1,10 +1,16 @@
 {{ define "email" }}
-To: {{.To}}
 Subject: {{.Subject}}
 
-This is a test email sent via Go and net/smtp using templating.
+Your scheduled recall mail is here:
 
-Best regards,
-Your Name
+Here are the people that you should contact today:
+
+{{ range .Contacts }}{{ .Name }}:
+Email: {{ .Email }}
+Phone: {{ .Phone }}
+Notes: {{ .Notes}}
+Last Contacted: {{ .LastContact }}
+
+{{ end }}
 {{ end }}
 

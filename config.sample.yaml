@@ -17,3 +17,4 @@ mail:
   from: foo@bar.com
   to:
     - foo@bar.com
+  subject: Blast from the past
