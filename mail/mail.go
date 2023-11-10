@@ -24,19 +24,6 @@ type Server struct {
 func (s *Server) Start(a *config.App) {
 	log.Println("starting mail server")
 
-	addr := s.Host + ":" + strconv.Itoa(s.Port)
-
-	// Check connection to the configured mail server
-	client, err := smtp.Dial(addr)
-	if err != nil {
-		log.Println("error connecting to mail server", err)
-	}
-	defer client.Close()
-	log.Println("connected to mail server")
-
-	// Authenticate to the mail Server
-	auth := sasl.NewPlainClient("", s.Username, s.Password)
-
 	// Get contacts that need to be contacted today
 	contacts, err := models.GetContactsToday(a.DB)
 	if err != nil {
@@ -71,6 +58,12 @@ func (s *Server) Start(a *config.App) {
 
 	// Remove the leading new line
 	emailBodyTrim := bytes.TrimLeft(emailBody.Bytes(), "\n")
+
+	// Server address
+	addr := s.Host + ":" + strconv.Itoa(s.Port)
+
+	// Authenticate to the mail Server
+	auth := sasl.NewPlainClient("", s.Username, s.Password)
 
 	// Send email
 	err = smtp.SendMail(addr, auth, a.Config.Mail.From, a.Config.Mail.To, bytes.NewReader(emailBodyTrim))
