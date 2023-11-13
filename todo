@@ -3,8 +3,27 @@ todo
 
 FEATURES
 
-- [ ] Add support for sending emails
-	- [ ] Refactor code into separate functions
+- [ ] Improve web html templates for all pages
+- [ ] Add validators to create and update contacts method
+- [ ] Add support for updating and creating contacts from the contacts page
+- [ ] Add pagination to the contacts page
+- [ ] Some form of validation that the contact has been contacted
+- [ ] Show rendered email template on settings page
+
+REFACTOR
+
+- [ ] Make notes a separate table so that individual notes can be added per contact
+- [ ] Rename Contact -> Category to Frequency
+- [ ] Refactor code mail.Start into smaller functions
+
+FIX
+
+- [ ] When a new contact is created the LastContact date is set to 01-01-0001, basically
+  they've never been contacted. Don't show this in the UI
+
+DONE
+
+- [X] Add support for sending emails
 	- [X] Run the mail server in a go routine
 	- [X] Only send the mails on a schedule
 	- [X] Actually write a new template that pulls information from contacts
@@ -18,24 +37,6 @@ FEATURES
 	- [X] Try sending a single email via emersion/go-smtp
 	- [X] Find a good library for sending emails
 	- [X] Figure out how you can send emails via go
-- [ ] Add validators to create and update contacts method
-- [ ] Add support for updating and creating contacts from the contacts page
-- [ ] Add pagination to the contacts page
-- [ ] Some form of validation that the contact has been contacted
-- [ ] Show rendered email template on settings page
-
-REFACTOR
-
-- [ ] Make notes a separate table so that individual notes can be added per contact
-- [ ] Rename Contact -> Category to Frequency
-
-FIX
-
-- [ ] When a new contact is created the LastContact date is set to 01-01-0001, basically
-  they've never been contacted. Don't show this in the UI
-
-DONE
-
 - [X] Add logout page
 - [X] Add validdtaors to create contacts method
 - [X] Add contacts page
