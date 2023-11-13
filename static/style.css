@@ -1,14 +1,18 @@
 :root {
     --light: #f4f4f4;
-    --sans-font: "InterVar", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
-    --display-font: "InterDisplay", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
-    --mono-font: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+    --sans-font: "Inter var", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
 }
 
 html {
     background: var(--light);
-    font-family: var(--sans-font);
     -webkit-text-size-adjust: none;
+}
+
+body {
+  font-family: var(--sans-font);
+  max-width: 1000px;
+  padding: 0 13px;
+  margin: 40px auto;
 }
 
 /* navbar configuration */
