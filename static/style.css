@@ -1,18 +1,26 @@
 :root {
-    --light: #f4f4f4;
+    /* Color scheme for the website */
+    --white: #ffffff;
+    --grey: #666666;
+    --black: #212121;
     --sans-font: "Inter var", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
 }
 
 html {
-    background: var(--light);
+    background: var(--white);
     -webkit-text-size-adjust: none;
 }
 
 body {
-  font-family: var(--sans-font);
-  max-width: 1000px;
-  padding: 0 13px;
-  margin: 40px auto;
+    font-family: var(--sans-font);
+    color: var(--black);
+    max-width: 1000px;
+    padding: 0 13px;
+    margin: 40px auto;
+}
+
+a {
+    color: var(--grey);
 }
 
 /* navbar configuration */
