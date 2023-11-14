@@ -29,6 +29,9 @@ nav {
     align-items: center;
     justify-content: center;
 }
+nav svg {
+    fill: var(--grey);
+}
 
 nav ul {
     list-style: none;
@@ -41,9 +44,19 @@ nav li {
 }
 
 nav li a {
-    /* Adjust the font size to your preference */
     font-size: 25px;
-    /* Remove underlines from links */
+    text-decoration: none;
+}
+
+nav button {
+    font-size: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+nav button a {
     text-decoration: none;
 }
 
