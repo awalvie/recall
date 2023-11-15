@@ -31,6 +31,7 @@ nav {
     align-items: center;
     justify-content: center;
 }
+
 nav svg {
     fill: var(--grey);
 }
@@ -72,6 +73,58 @@ nav button a {
 .nav-primary {
     border: 1px solid var(--grey);
     border-radius: 5px;
+}
+
+.login {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+.login form div {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.login div label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.login div input {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid var(--grey);
+    border-radius: .25rem;
+}
+
+.login input {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: .25rem;
+}
+
+.login-error {
+    text-align: center;
+    color: var(--grey);
+    margin: 10px;
+    font-size: 0.9rem;
+    text-decoration: underline;
 }
 
 .row {

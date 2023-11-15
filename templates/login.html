@@ -1,15 +1,27 @@
 {{ define "login"}}
 <html>
-  {{ template "head" . }}
-  <h1>Login</h1>
+{{ template "head" . }}
+
 <body>
-  <form action="/login" method="POST">
-    {{ if .error }}
-        <div>{{ .error }}</div>
-    {{ end }}
-    <input type="text" name="username" placeholder="Username" />
-    <input type="password" name="password" placeholder="Password" />
-    <input type="submit" value="Login" />
-  </form>
+	<div class="login">
+		<form action="/login" method="POST">
+			{{ if .error }}
+			<div class="login-error">{{ .error }}</div>
+			{{ end }}
+			<div class="login-form-group">
+				<label for="username">Username</label>
+				<input type="text" name="username" autocomplete="off" />
+			</div>
+
+			<div>
+				<label for="password">Password</label>
+				<input type="password" name="password" />
+			</div>
+
+			<input type="submit" value="Login" />
+		</form>
+	</div>
+</body>
+
 </html>
 {{ end }}
