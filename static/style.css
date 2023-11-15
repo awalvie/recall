@@ -1,6 +1,7 @@
 :root {
     /* Color scheme for the website */
     --white: #ffffff;
+    --light-grey: #f5f5f5;
     --grey: #666666;
     --black: #212121;
     --sans-font: "Inter var", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
@@ -25,6 +26,7 @@ a {
 
 /* navbar configuration */
 nav {
+    color: var(--grey);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,16 +37,16 @@ nav svg {
 
 nav ul {
     list-style: none;
-    padding: 0;
+    padding: 10px;
 }
 
 nav li {
     display: inline;
-    margin-right: 20px;
+    margin: 10px;
+    font-size: 25px;
 }
 
 nav li a {
-    font-size: 25px;
     text-decoration: none;
 }
 
@@ -61,6 +63,16 @@ nav button a {
 }
 
 /* Custom Classes */
+.add-contact {
+    background-color: var(--light-grey);
+    padding: 11px;
+}
+
+.nav-primary {
+    border: 1px solid var(--grey);
+    border-radius: 5px;
+}
+
 .row {
     display: flex;
 }
