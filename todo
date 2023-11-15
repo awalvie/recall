@@ -3,9 +3,8 @@ todo
 
 FEATURES
 
-- [ ] Settle on a color palette for the website
 - [ ] Improve web html templates for all pages
-	- [ ] Improve navbar css
+	- [X] Improve navbar css
 	- [ ] Improve contacts page
 	- [ ] Improve add contacts page
 - [ ] Add validators to create and update contacts method
@@ -27,6 +26,7 @@ FIX
 
 DONE
 
+- [X] Settle on a color palette for the website
 - [X] Add support for sending emails
 	- [X] Run the mail server in a go routine
 	- [X] Only send the mails on a schedule
