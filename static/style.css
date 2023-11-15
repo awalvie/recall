@@ -65,6 +65,7 @@ nav button a {
 /* Custom Classes */
 .add-contact {
     background-color: var(--light-grey);
+    border-radius: 5px;
     padding: 11px;
 }
 
