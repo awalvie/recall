@@ -75,6 +75,32 @@ nav button a {
     border-radius: 5px;
 }
 
+.add-contact-form {
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.add-contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.add-contact-form textarea {
+    display: block;
+    width: 100%;
+    margin: 1rem auto;
+    height: 10rem;
+}
+
+.add-contact-form input {
+    display: block;
+    width: 100%;
+    margin: 1rem auto;
+    height: 2rem;
+}
+
 .login {
     justify-content: center;
     align-items: center;
@@ -95,28 +121,15 @@ nav button a {
 .login div input {
     display: block;
     width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: var(--white);
-    background-clip: padding-box;
-    border: 1px solid var(--grey);
-    border-radius: .25rem;
+    margin: 1rem auto;
+    height: 2rem;
 }
 
 .login input {
     display: block;
     width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: var(--white);
-    border: 1px solid var(--grey);
-    border-radius: .25rem;
+    margin: 1rem auto;
+    height: 2rem;
 }
 
 .login-error {

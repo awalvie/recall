@@ -1,18 +1,17 @@
 {{ define "add-contact" }}
 <html>
-<title>Add Contact</title>
 {{ template "head" . }}
 {{ template "navbar" . }}
 <main>
-    <form action="/api/contacts" method="POST">
+    <form action="/api/contacts" method="POST" class="add-contact-form">
         <label for="Name">Name:</label>
-        <input type="text" name="name" required><br><br>
+        <input type="text" name="name" required>
 
         <label for="email">Email:</label>
-        <input type="email" name="email" required><br><br>
+        <input type="email" name="email" required>
 
         <label for="phone">Phone:</label>
-        <input type="tel" name="phone" required><br><br>
+        <input type="tel" name="phone" required>
 
         <label for="category">Category:</label>
         <select name="Category" required>
@@ -23,7 +22,7 @@
         </select><br><br>
 
         <label for="notes">Notes:</label>
-        <textarea name="Notes" required></textarea><br><br>
+        <textarea name="Notes" required></textarea>
 
         <input type="submit" value="Create Record">
     </form>
