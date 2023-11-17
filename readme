@@ -2,3 +2,35 @@ recall
 ------
 
 Recall sends you daily reminders about people you should contact.
+
+SETUP:
+
+* Clone repo
+* cp config.sample.yaml config.yaml
+* make run
+
+CONFIG
+
+Uses yaml for configuration. Looks for a 'config.yaml' in the current
+directory by default; pass the '--config' flag to point it elsewhere.
+
+server:
+  name: blah.com
+  host: 127.0.0.1
+  port: 5555
+dirs:
+  templates: ./templates
+  static: ./static
+auth:
+  username: user
+  password: pass
+mail:
+  host: mail.example.com
+  port: 25
+  username: foo@bar.com
+  password: foobar
+  tls: true
+  from: foo@bar.com
+  to:
+    - foo@bar.com
+  subject: Blast from the past
