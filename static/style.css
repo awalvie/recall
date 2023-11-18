@@ -65,6 +65,26 @@ nav button a {
     text-decoration: none;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+table th {
+    background-color: var(--dark-white);
+}
+
+table tr:hover {
+    background-color: var(--light-grey);
+}
+
 /* Custom Classes */
 .add-contact {
     background-color: var(--dark-white);
