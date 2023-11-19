@@ -1,0 +1,18 @@
+{{ define "contact"}}
+<html>
+<!--Head-->
+{{ template "head" . }}
+<!--Navigation Bar-->
+{{ template "navbar" . }}
+<!--Main Page-->
+<main>
+  <h1>{{ .Contact.Name }}</h1>
+  <p>{{ .Contact.Email }}</p>
+  <p>{{ .Contact.Phone }}</p>
+  <p>{{ .Contact.NextContact.Format "2006-01-02" }}</p>
+  <p>{{ .Contact.LastContact.Format "2006-01-02" }}</p>
+  <p>{{ .Contact.Notes }}</p>
+  <p>{{ .Contact.Category }}</p>
+</main>
+</html>
+{{ end }}

@@ -3,6 +3,7 @@ module github.com/awalvie/recall
 go 1.17
 
 require (
+	github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21
 	github.com/emersion/go-smtp v0.18.1
 	github.com/go-faker/faker/v4 v4.2.0
 	github.com/labstack/echo/v4 v4.10.2
@@ -12,7 +13,6 @@ require (
 )
 
 require (
-	github.com/emersion/go-sasl v0.0.0-20200509203442-7bfe0ed36a21 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
