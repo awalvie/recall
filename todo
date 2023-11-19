@@ -3,12 +3,13 @@ todo
 
 FEATURES
 
-- [ ] Create individual contact page
+- [ ] Improve css for individual contact page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for updating and creating contacts from the contacts page
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
 - [ ] Show rendered email template on settings page
+- [ ] Add a search bar on contacts page
 
 REFACTOR
 
@@ -24,6 +25,7 @@ FIX
 
 DONE
 
+- [X] Create individual contact page
 - [X] Improve web html templates for all pages
 	- [X] Improve contacts page, render a better table
 	- [X] Add edit and delete buttons on contacts table
