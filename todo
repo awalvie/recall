@@ -5,6 +5,7 @@ FEATURES
 
 - [ ] Improve web html templates for all pages
 	- [ ] Improve contacts page, render a better table
+	- [X] Add edit and delete buttons on contacts table
 	- [X] Improve add contacts page
 	- [X] Improve navbar css
 - [ ] Add validators to create and update contacts method
@@ -16,6 +17,7 @@ FEATURES
 REFACTOR
 
 - [ ] Make notes a separate table so that individual notes can be added per contact
+- [ ] Make notes not required as part of add-contact form
 - [ ] Rename Contact -> Category to Frequency
 - [ ] Refactor code mail.Start into smaller functions
 
