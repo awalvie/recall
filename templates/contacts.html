@@ -24,7 +24,7 @@
             <td>{{.Email}}</td>
             <td>{{.Phone}}</td>
             <td>{{.Category}}</td>
-            <td>{{.LastContact.Format "2006-01-02"}}</td>
+            {{ if .LastContact.IsZero }}<td></td>{{ else }}<td>{{.LastContact.Format "2006-01-02"}}</td>{{ end }}
             <td>{{.NextContact.Format "2006-01-02"}}</td>
             <td><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                     <path

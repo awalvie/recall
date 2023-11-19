@@ -3,11 +3,7 @@ todo
 
 FEATURES
 
-- [ ] Improve web html templates for all pages
-	- [ ] Improve contacts page, render a better table
-	- [X] Add edit and delete buttons on contacts table
-	- [X] Improve add contacts page
-	- [X] Improve navbar css
+- [ ] Create individual contact page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for updating and creating contacts from the contacts page
 - [ ] Add pagination to the contacts page
@@ -23,11 +19,16 @@ REFACTOR
 
 FIX
 
-- [ ] When a new contact is created the LastContact date is set to 01-01-0001, basically
+- [X] When a new contact is created the LastContact date is set to 01-01-0001, basically
   they've never been contacted. Don't show this in the UI
 
 DONE
 
+- [X] Improve web html templates for all pages
+	- [X] Improve contacts page, render a better table
+	- [X] Add edit and delete buttons on contacts table
+	- [X] Improve add contacts page
+	- [X] Improve navbar css
 - [X] Settle on a color palette for the website
 - [X] Add support for sending emails
 	- [X] Run the mail server in a go routine
