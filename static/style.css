@@ -95,6 +95,12 @@ table tr:hover {
 }
 
 /* custom classes */
+.not-found {
+    margin-top: 30%;
+    text-align: center;
+    font-size: 2rem;
+}
+
 .contact {
     max-width: 800px;
     margin: 0 auto;
