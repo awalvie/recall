@@ -6,13 +6,23 @@
 {{ template "navbar" . }}
 <!--Main Page-->
 <main>
-  <h1>{{ .Contact.Name }}</h1>
-  <p>{{ .Contact.Email }}</p>
-  <p>{{ .Contact.Phone }}</p>
-  <p>{{ .Contact.NextContact.Format "2006-01-02" }}</p>
-  <p>{{ .Contact.LastContact.Format "2006-01-02" }}</p>
-  <p>{{ .Contact.Notes }}</p>
-  <p>{{ .Contact.Category }}</p>
+  <section>
+    <h1>{{ .Contact.Name }}</h1>
+    <p>{{ .Contact.Email }} | {{ .Contact.Phone }}</p>
+    <div>
+        <h2>{{ .Contact.NextContact.Format "Jan 02, 2006" }}</h2>
+        <p>Next Contact</p>
+        <h2>{{ .Contact.LastContact.Format "Jan 02, 2006" }}</h2>
+        <p>Last Contact</p>
+        <h2>{{ .Contact.Category }}</h2>
+        <p>Contact Frequency</p>
+    </div>
+    <p>Notes</p>
+    <div>
+        <textarea>{{ .Contact.Notes }}</textarea>
+    </div>
+</section>
+
 </main>
 </html>
 {{ end }}
