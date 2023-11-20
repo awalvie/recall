@@ -25,7 +25,7 @@
                 <p>Next Contact</p>
             </span>
             <span>
-                {{ if .Contact.LastContact.IsZero }}<h2>Never</h2>{{ else }}<h2>{{ .Contact.LastContact.Format "Jan02,2006" }}</h2>{{ end }}
+                {{ if .Contact.LastContact.IsZero }}<h2>Never</h2>{{ else }}<h2>{{ .Contact.LastContact.Format "Jan 02, 2006" }}</h2>{{ end }}
                 <p>Last Contact</p>
             </span>
             <span>
