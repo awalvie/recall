@@ -3,7 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Improve css for individual contact page
 - [ ] Add validators to create and update contacts method
 - [ ] Add support for updating and creating contacts from the contacts page
 - [ ] Add pagination to the contacts page
@@ -25,6 +24,7 @@ FIX
 
 DONE
 
+- [X] Improve css for individual contact page
 - [X] Create individual contact page
 - [X] Improve web html templates for all pages
 	- [X] Improve contacts page, render a better table

@@ -23,6 +23,13 @@ body {
     margin: 40px auto;
 }
 
+main h1,
+h2,
+h3,
+strong {
+    font-weight: 600;
+}
+
 a {
     color: var(--grey);
 }
@@ -87,8 +94,71 @@ table tr:hover {
     background-color: var(--light-grey);
 }
 
-/* Custom Classes */
-.add-contact {
+/* custom classes */
+.contact {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+}
+
+.contact-header h1 {
+    font-size: 2.5rem;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.contact-header svg {
+    margin: 0 5px;
+}
+
+.contact p {
+    font-size: 1.5rem;
+    color: var(--grey);
+}
+
+.contact-schedule {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact span {
+    margin-right: auto;
+}
+
+.contact span h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+    color: var(--light-black);
+}
+
+.contact span p {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: var(--grey);
+}
+
+.contact-notes h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--light-black);
+}
+
+.contact-notes p {
+    font-size: 1rem;
+    color: var(--grey);
+    width: 100%;
+    border: 1px dashed var(--black);
+    padding: 5px;
+    font-size: 1.25rem;
+}
+
+.conta .add-contact {
     background-color: var(--dark-white);
     border-radius: 5px;
     padding: 11px;
