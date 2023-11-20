@@ -102,7 +102,7 @@ table tr:hover {
 }
 
 .contact {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -123,7 +123,7 @@ table tr:hover {
 }
 
 .contact p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--grey);
 }
 
