@@ -160,7 +160,7 @@ table tr:hover {
     color: var(--grey);
     width: 100%;
     border: 1px dashed var(--black);
-    padding: 5px;
+    padding: 10px;
     font-size: 1.25rem;
 }
 
