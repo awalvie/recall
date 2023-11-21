@@ -234,6 +234,7 @@ table tr:hover {
     background-clip: padding-box;
     border: 1px solid var(--light-grey);
     border-radius: 0.25rem;
+    padding: 0.5rem;
 }
 
 .login-error {
