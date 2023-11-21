@@ -4,8 +4,26 @@
 {{ template "navbar" . }}
 <main>
     <div class="row">
-        <div class="column">blah</div>
-        <div class="column">blah</div>
+        <section class="column">
+            <h2>Upcoming</h2>
+            {{ if .Upcoming }}
+              {{ range .Upcoming }}
+              <p>{{ .Name }} – {{ .NextContact.Format "Jan 02, 2006" }}</p>
+              {{ end }}
+            {{ else }}
+              <p>SoonTM</p>
+            {{ end }}
+        </section>
+        <section class="column">
+            <h2>Recent</h2>
+            {{ if .Recent }}}
+              {{ range .Recent }}
+              <p>{{ .Name }} – {{ .NextContact.Format "Jan 02, 2006" }}</p>
+              {{ end }}
+            {{ else }}
+              <p>SoonTM</p>
+            {{ end }}
+        </section>
     </div>
 </main>
 

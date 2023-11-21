@@ -20,6 +20,26 @@ func IndexPage(e echo.Context) error {
 	// Get the config from the context
 	a := e.Get("app").(*config.App)
 
+	upcoming, err := models.GetUpcomingContacts(a.DB)
+	if err != nil {
+		log.Println("error getting upcoming contacts:", err)
+		return err
+	}
+
+	recent, err := models.GetRecentContacts(a.DB)
+	if err != nil {
+		log.Println("error getting recent contacts:", err)
+		return err
+	}
+
+	data := struct {
+		Upcoming []models.Contact
+		Recent   []models.Contact
+	}{
+		Upcoming: upcoming,
+		Recent:   recent,
+	}
+
 	// Get the template path
 	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
 
@@ -27,7 +47,7 @@ func IndexPage(e echo.Context) error {
 	t := template.Must(template.ParseGlob(tpath))
 
 	// Render the templates
-	if err := t.ExecuteTemplate(e.Response().Writer, "index", nil); err != nil {
+	if err := t.ExecuteTemplate(e.Response().Writer, "index", data); err != nil {
 		log.Println("error rendering template:", err)
 		return err
 	}

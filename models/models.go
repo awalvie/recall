@@ -74,3 +74,25 @@ func GetContactsToday(db *gorm.DB) ([]Contact, error) {
 	db.Where("DATE(next_contact) = ?", today).Find(&contacts)
 	return contacts, nil
 }
+
+// GetUpcomingContacts returns all contacts with next contact date
+// within the next 10 days
+func GetUpcomingContacts(db *gorm.DB) ([]Contact, error) {
+	// Get all contacts with next contact date as today
+	var contacts []Contact
+	today := time.Now().Format("2006-01-02")
+	tenDays := time.Now().AddDate(0, 0, 10).Format("2006-01-02")
+	db.Where("DATE(next_contact) BETWEEN ? AND ?", today, tenDays).Find(&contacts)
+	return contacts, nil
+}
+
+// GetRecentContacts returns all contacts with last contact date
+// within the last 10 days
+func GetRecentContacts(db *gorm.DB) ([]Contact, error) {
+	// Get all contacts with next contact date as today
+	var contacts []Contact
+	today := time.Now().Format("2006-01-02")
+	tenDays := time.Now().AddDate(0, 0, -10).Format("2006-01-02")
+	db.Where("DATE(last_contact) BETWEEN ? AND ?", today, tenDays).Find(&contacts)
+	return contacts, nil
+}

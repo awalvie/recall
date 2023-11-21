@@ -250,8 +250,8 @@ table tr:hover {
 }
 
 .column {
+    border: 2px dashed var(--grey);
     flex: 50%;
     text-align: center;
-    padding: 10%;
-    font-size: 100px;
+    margin: 10px
 }
