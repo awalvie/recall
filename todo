@@ -3,7 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Add data to columns on dashboard
 - [ ] Make the buttons clickable on /contact/:id
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
@@ -24,6 +23,7 @@ FIX
 
 DONE
 
+- [X] Add data to columns on dashboard
 - [X] Improve css for individual contact page
 - [X] Create individual contact page
 - [X] Improve web html templates for all pages
