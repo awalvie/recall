@@ -1,0 +1,26 @@
+{{ define "edit-contact"}}
+<html>
+<!--Head-->
+{{ template "head" . }}
+<!--Navigation Bar-->
+{{ template "navbar" . }}
+<!--Main Page-->
+<main>
+    <main>
+        <section class="contact">
+            <form action="/contacts/{{ .Contact.ID }}/update" method="POST">
+                <input type="text" id="name" name="name" value="{{ .Contact.Name }}">
+                <input type="email" id="email" name="email" value="{{ .Contact.Email }}">
+                <input type="tel" id="phone" name="phone" value="{{ .Contact.Phone }}">
+                <input type="date" id="nextContact" name="nextContact" value="{{ .Contact.NextContact.Format " 2006-01-02" }}">
+                <input type="date" id="lastContact" name="lastContact" value="{{ if .Contact.LastContact.IsZero }}{{ else }}{{ .Contact.LastContact.Format " 2006-01-02" }}{{ end }}">
+                <input type="text" id="category" name="category" value="{{ .Contact.Category }}">
+                <textarea id="notes" name="notes">{{ .Contact.Notes }}</textarea>
+                <input type="submit" value="Update Contact">
+            </form>
+        </section>
+    </main>
+</main>
+
+</html>
+{{ end }}

@@ -58,6 +58,7 @@ func Configure(e *echo.Echo, a *config.App) {
 	e.GET("/static/:file", handlers.StaticFiles)
 	e.GET("/dashboard", handlers.DashboardPage)
 	e.GET("/add-contact", handlers.AddContactPage)
+	e.GET("/contacts/:id/update", handlers.EditContactPage)
 
 	// Auth routes
 	e.GET("/login", handlers.LoginPage)

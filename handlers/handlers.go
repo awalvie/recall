@@ -276,3 +276,75 @@ func ContactPage(e echo.Context) error {
 	}
 	return nil
 }
+
+// EditContactPage renders a page for editing a contact
+// with a form that makes a PUT call to /api/contacts/:id
+// and updates the contact in the database
+func EditContactPage(e echo.Context) error {
+	// Get app config from the Context
+	a := e.Get("app").(*config.App)
+
+	// Get the contact id from the url
+	id := e.Param("id")
+
+	// Get cookie from the context
+	cookie, err := e.Cookie("auth")
+	if err != nil {
+		log.Println("error getting cookie:", err)
+		return err
+	}
+
+	// Bulid url for /api/contacts
+	url := "http://" + a.Config.Server.Host + ":" + strconv.Itoa(a.Config.Server.Port) + "/api/contacts/" + id
+
+	// Create a new request object
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		log.Println("error creating request:", err)
+		return err
+	}
+
+	// Set the cookie in the request
+	req.AddCookie(cookie)
+
+	// Make the http request
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Println("error getting contacts:", err)
+		return err
+	}
+
+	// Read the Response
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Println("error reading response:", err)
+		return err
+	}
+
+	// Unmarshal body into a contact
+	var contact models.Contact
+	err = json.Unmarshal(body, &contact)
+	if err != nil {
+		log.Println("error unmarshaling response:", err)
+		return err
+	}
+
+	data := struct {
+		Contact models.Contact
+	}{
+		Contact: contact,
+	}
+
+	// Get the template path
+	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
+
+	// Parse the templates
+	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the templates
+	if err := t.ExecuteTemplate(e.Response().Writer, "edit-contact", data); err != nil {
+		log.Println("error rendering template:", err)
+	}
+	return nil
+}
