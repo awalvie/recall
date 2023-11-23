@@ -3,7 +3,7 @@ todo
 
 FEATURES
 
-- [ ] Add page for editing contacts
+- [ ] Style edit-contact so it looks similar to contact
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
 - [ ] Show rendered email template on settings page
@@ -23,6 +23,7 @@ FIX
 
 DONE
 
+- [X] Add page for editing contacts
 - [X] Make the buttons clickable on /contact/:id
 - [X] Add data to columns on dashboard
 - [X] Improve css for individual contact page
