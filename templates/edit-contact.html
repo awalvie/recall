@@ -6,20 +6,47 @@
 {{ template "navbar" . }}
 <!--Main Page-->
 <main>
-    <main>
-        <section class="contact">
-            <form action="/contacts/{{ .Contact.ID }}/update" method="POST">
+    <section class="contact">
+        <form action="/contacts/{{ .Contact.ID }}/update" method="POST">
+            <div class="contact-header">
                 <input type="text" id="name" name="name" value="{{ .Contact.Name }}">
+            </div>
+
+            <div class="contact-info">
                 <input type="email" id="email" name="email" value="{{ .Contact.Email }}">
                 <input type="tel" id="phone" name="phone" value="{{ .Contact.Phone }}">
-                <input type="date" id="nextContact" name="nextContact" value="{{ .Contact.NextContact.Format " 2006-01-02" }}">
-                <input type="date" id="lastContact" name="lastContact" value="{{ if .Contact.LastContact.IsZero }}{{ else }}{{ .Contact.LastContact.Format " 2006-01-02" }}{{ end }}">
-                <input type="text" id="category" name="category" value="{{ .Contact.Category }}">
+            </div>
+
+            <div class="contact-schedule">
+                <span>
+                    <input type="date" id="nextContact" name="nextContact" value="{{ .Contact.NextContact.Format "2006-01-02" }}">
+                    <p>Next Contact</p>
+                </span>
+                <span>
+                    <input type="date" id="lastContact" name="lastContact" value="{{ if .Contact.LastContact.IsZero }}{{ else }}{{ .Contact.LastContact.Format "2006-01-02" }}{{ end }}">
+                    <p>Last Contact</p>
+                </span>
+                <span>
+                    <select name="category" id="category">
+                        <option value="A" {{ if eq .Contact.Category "A" }}selected{{ end }}>A</option>
+                        <option value="B" {{ if eq .Contact.Category "B" }}selected{{ end }}>B</option>
+                        <option value="C" {{ if eq .Contact.Category "C" }}selected{{ end }}>C</option>
+                        <option value="D" {{ if eq .Contact.Category "D" }}selected{{ end }}>D</option>
+                    </select>
+                    <p>Contact Frequency</p>
+                </span>
+            </div>
+
+            <div class="contact-notes">
+                <h3>Notes</h3>
                 <textarea id="notes" name="notes">{{ .Contact.Notes }}</textarea>
+            </div>
+            
+            <div class="contact-submit">
                 <input type="submit" value="Update Contact">
-            </form>
-        </section>
-    </main>
+            </div>
+        </form>
+    </section>
 </main>
 
 </html>

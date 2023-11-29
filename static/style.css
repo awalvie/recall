@@ -106,25 +106,40 @@ table tr:hover {
     margin: 0 auto;
 }
 
+.contact input, 
+.contact select {
+    border: none;
+    border-bottom: 1px solid var(--grey);
+    background: none;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 10px;
+    margin: 10px auto;
+}
+
 .contact-header {
     display: flex;
     align-items: center;
 }
 
-.contact-header h1 {
+.contact-header h1,
+.contact-header input {
     font-size: 2.5rem;
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .contact-header svg {
     margin: 0 5px;
 }
 
-.contact p {
+.contact p,
+.contact-info input {
     font-size: 1.2rem;
     color: var(--grey);
+    margin: 10px auto;
 }
 
 .contact-schedule {
@@ -137,16 +152,12 @@ table tr:hover {
     margin-right: auto;
 }
 
-.contact span h2 {
+.contact span h2,
+.contact span input,
+.contact span select {
     font-size: 2rem;
     margin-bottom: 0;
     color: var(--light-black);
-}
-
-.contact span p {
-    font-size: 1rem;
-    margin-top: 10px;
-    color: var(--grey);
 }
 
 .contact-notes h3 {
@@ -155,13 +166,34 @@ table tr:hover {
     color: var(--light-black);
 }
 
-.contact-notes p {
+.contact-notes p,
+.contact-notes textarea {
     font-size: 1rem;
     color: var(--grey);
     width: 100%;
     border: 1px dashed var(--black);
     padding: 10px;
     font-size: 1.25rem;
+}
+
+.contact-notes textarea {
+    height: 10rem;
+}
+
+.contact-notes button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--grey);
+    cursor: pointer;
+}
+
+.contact-submit input {
+    background-color: var(--dark-white);
+    border: none;
+    font-size: 1.25rem;
+    color: var(--grey);
+    cursor: pointer;
 }
 
 .conta .add-contact {
