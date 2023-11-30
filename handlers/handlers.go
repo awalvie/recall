@@ -69,7 +69,7 @@ func ContactsPage(e echo.Context) error {
 	url := "http://" + a.Config.Server.Host + ":" + strconv.Itoa(a.Config.Server.Port) + "/api/contacts"
 
 	// Create a new request object
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", url, http.NoBody)
 	if err != nil {
 		log.Println("error creating request:", err)
 		return err
@@ -226,7 +226,7 @@ func ContactPage(e echo.Context) error {
 	url := "http://" + a.Config.Server.Host + ":" + strconv.Itoa(a.Config.Server.Port) + "/api/contacts/" + id
 
 	// Create a new request object
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", url, http.NoBody)
 	if err != nil {
 		log.Println("error creating request:", err)
 		return err
@@ -298,7 +298,7 @@ func EditContactPage(e echo.Context) error {
 	url := "http://" + a.Config.Server.Host + ":" + strconv.Itoa(a.Config.Server.Port) + "/api/contacts/" + id
 
 	// Create a new request object
-	req, err := http.NewRequest("GET", url, nil)
+	req, err := http.NewRequest("GET", url, http.NoBody)
 	if err != nil {
 		log.Println("error creating request:", err)
 		return err
