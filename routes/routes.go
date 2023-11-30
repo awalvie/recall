@@ -32,10 +32,10 @@ func Configure(e *echo.Echo, a *config.App) {
 		LogValuesFunc: func(c echo.Context, v middleware.RequestLoggerValues) error {
 			log.Println("request",
 				"URI:", v.URI,
-				"status:", v.Status,
-				"error", v.Error,
 				"method", v.Method,
+				"status:", v.Status,
 				"latency", v.Latency,
+				"error", v.Error,
 			)
 			return nil
 		},
