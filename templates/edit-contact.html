@@ -7,7 +7,7 @@
 <!--Main Page-->
 <main>
     <section class="contact">
-        <form action="/contacts/{{ .Contact.ID }}/update" method="POST">
+        <form action="/api/contacts/{{ .Contact.ID }}" method="POST" onsubmit="return redirectToContacts()">
             <div class="contact-header">
                 <input type="text" id="name" name="name" value="{{ .Contact.Name }}">
             </div>
@@ -41,11 +41,19 @@
                 <h3>Notes</h3>
                 <textarea id="notes" name="notes">{{ .Contact.Notes }}</textarea>
             </div>
-            
+
             <div class="contact-submit">
                 <input type="submit" value="Update Contact">
             </div>
         </form>
+
+        <script>
+            function redirectToContacts() {
+                window.location.href = "/contacts/{{ .Contact.ID}}";
+                return false;
+            }
+        </script>
+
     </section>
 </main>
 

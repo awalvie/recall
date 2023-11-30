@@ -70,7 +70,7 @@ func Configure(e *echo.Echo, a *config.App) {
 	api.GET("/contacts", handlers.GetContacts)
 	api.POST("/contacts", handlers.CreateContact)
 	api.GET("/contacts/:id", handlers.GetContact)
-	api.PUT("/contacts/:id", handlers.UpdateContact)
+	api.POST("/contacts/:id", handlers.UpdateContact)
 	api.DELETE("/contacts/:id", handlers.DeleteContact)
 }
 
