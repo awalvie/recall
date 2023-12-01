@@ -3,7 +3,7 @@
 {{ template "head" . }}
 {{ template "navbar" . }}
 <main>
-    <form action="/api/contacts" method="POST" class="add-contact-form" onsubmit="return redirectToContacts()">
+    <form id="add-contact" method="POST" action="/api/contacts" class="add-contact-form">
         <label for="Name">Name:</label>
         <input type="text" name="name" required>
 
@@ -26,12 +26,24 @@
 
         <input type="submit" value="Submit">
     </form>
-
     <script>
-        function redirectToContacts() {
-            window.location.href = "/contacts";
-            return false;
-        }
+        const contactForm = document.getElementById('add-contact');
+        contactForm.addEventListener('submit', async (event) => {
+            // ensure the default form submit does not trigger
+            event.preventDefault();
+            const data = new FormData(contactForm);
+            const response = await fetch('/api/contacts', {
+                method: 'POST',
+                body: data
+            });
+
+            if (!response.ok) {
+                console.error('Error:', response.statusText);
+            } else {
+                const json = await response.json();
+                window.location.href = "/contacts";
+            }
+        });
     </script>
 </main>
 
