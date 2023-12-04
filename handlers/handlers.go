@@ -348,3 +348,21 @@ func EditContactPage(e echo.Context) error {
 	}
 	return nil
 }
+
+// SettingsPage renders a static page for showing the current settings
+func SettingsPage(e echo.Context) error {
+	// Get app config from the Context
+	a := e.Get("app").(*config.App)
+
+	// Get the template path
+	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
+
+	// Parse the templates
+	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the templates
+	if err := t.ExecuteTemplate(e.Response().Writer, "settings", nil); err != nil {
+		log.Println("error rendering template:", err)
+	}
+	return nil
+}

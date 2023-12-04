@@ -54,6 +54,7 @@ func Configure(e *echo.Echo, a *config.App) {
 	// Page Routes
 	e.GET("/", handlers.IndexPage)
 	e.GET("/contacts", handlers.ContactsPage)
+	e.GET("/settings", handlers.SettingsPage)
 	e.GET("/contacts/:id", handlers.ContactPage)
 	e.GET("/static/:file", handlers.StaticFiles)
 	e.GET("/dashboard", handlers.DashboardPage)
