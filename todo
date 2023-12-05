@@ -4,6 +4,8 @@ todo
 FEATURES
 
 - [ ] Add settings page
+	- [ ] When will the next email be sent?
+	- [ ] What does the email template look like
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
 - [ ] Show rendered email template on settings page
