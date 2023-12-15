@@ -3,6 +3,31 @@
 {{ template "head" . }}
 {{ template "navbar" . }}
 <main>
+    <pre>
+CONFIG
+------
+
+Server
+
+  - Name: {{ .Config.Server.Name }}
+  - Host: {{ .Config.Server.Host }}
+  - Port: {{ .Config.Server.Port }}
+
+Dirs
+
+  - Templates: {{ .Config.Dirs.Templates }}
+  - Static: {{ .Config.Dirs.Static }}
+
+Mail
+
+  - Host: {{ .Config.Mail.Host }}
+  - Port: {{ .Config.Mail.Port }}
+  - Username: {{ .Config.Mail.Username }}
+  - Password: *
+  - From: {{ .Config.Mail.From }}
+  - To: {{ .Config.Mail.To }}
+  - Subject: {{ .Config.Mail.Subject }}
+    </pre>
 </main>
 </html>
 {{ end }}

@@ -8,6 +8,7 @@
     --light-black: #333333;
     --black: #212121;
     --sans-font: "Inter var", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif;
+    --mono-font: 'SF Mono', SFMono-Regular, ui-monospace, 'Roboto Mono', Menlo, Consolas, monospace;
 }
 
 html {
@@ -32,6 +33,16 @@ strong {
 
 a {
     color: var(--grey);
+}
+
+pre {
+    font-family: var(--mono-font);
+    background-color: var(--dark-white);
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* navbar configuration */

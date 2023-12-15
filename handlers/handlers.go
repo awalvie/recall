@@ -354,6 +354,13 @@ func SettingsPage(e echo.Context) error {
 	// Get app config from the Context
 	a := e.Get("app").(*config.App)
 
+	// Settings data
+	data := struct {
+		Config *config.Config
+	}{
+		Config: a.Config,
+	}
+
 	// Get the template path
 	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
 
@@ -361,7 +368,7 @@ func SettingsPage(e echo.Context) error {
 	t := template.Must(template.ParseGlob(tpath))
 
 	// Render the templates
-	if err := t.ExecuteTemplate(e.Response().Writer, "settings", nil); err != nil {
+	if err := t.ExecuteTemplate(e.Response().Writer, "settings", data); err != nil {
 		log.Println("error rendering template:", err)
 	}
 	return nil
