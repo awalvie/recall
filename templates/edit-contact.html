@@ -7,7 +7,7 @@
 <!--Main Page-->
 <main>
     <section class="contact">
-        <form action="/api/contacts/{{ .Contact.ID }}" method="POST" onsubmit="return redirectToContacts()">
+        <form action="/api/contacts/{{ .Contact.ID }}" method="POST" id="edit-contact">
             <div class="contact-header">
                 <input type="text" id="name" name="name" value="{{ .Contact.Name }}">
             </div>
@@ -48,10 +48,23 @@
         </form>
 
         <script>
-            function redirectToContacts() {
-                window.location.href = "/contacts/{{ .Contact.ID}}";
-                return false;
-            }
+            const editForm = document.getElementById("edit-contact");
+            editForm.addEventListener('submit', async(event) => {
+                // Prevent the form from submitting
+                event.preventDefault();
+                const data = new FormData(editForm);
+                const response = await fetch('/api/contacts/{{ .Contact.ID }}', {
+                    method: 'POST',
+                    body: data
+                });
+
+                if (!response.ok) {
+                    console.error('Error:', response.statusText);
+                } else {
+                    const json = await response.json();
+                    window.location.href = '/contacts/{{ .Contact.ID }}';
+                }
+            })
         </script>
 
     </section>
