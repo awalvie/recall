@@ -20,7 +20,8 @@ REFACTOR
 
 FIX
 
-- [ ] Updating a contact doesn't work
+- [ ] When the contact category is updated, automatically update the next contact date
+- [X] Updating a contact doesn't work
 - [X] When a new contact is created the LastContact date is set to 01-01-0001, basically
   they've never been contacted. Don't show this in the UI
 
