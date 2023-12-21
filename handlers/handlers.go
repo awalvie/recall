@@ -36,9 +36,11 @@ func IndexPage(e echo.Context) error {
 	data := struct {
 		Upcoming []models.Contact
 		Recent   []models.Contact
+		NextMail time.Time
 	}{
 		Upcoming: upcoming,
 		Recent:   recent,
+		NextMail: a.NextMail,
 	}
 
 	// Get the template path
@@ -357,11 +359,9 @@ func SettingsPage(e echo.Context) error {
 
 	// Settings data
 	data := struct {
-		Config   *config.Config
-		NextMail time.Time
+		Config *config.Config
 	}{
-		Config:   a.Config,
-		NextMail: a.NextMail,
+		Config: a.Config,
 	}
 
 	// Get the template path

@@ -299,3 +299,9 @@ table tr:hover {
     text-align: center;
     margin: 10px
 }
+
+.next-mail {
+  text-align: center;
+  color: var(--grey);
+  font-size: 0.8rem;
+}
