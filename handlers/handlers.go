@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"strconv"
+	"time"
 
 	"github.com/awalvie/recall/config"
 	"github.com/awalvie/recall/models"
@@ -356,9 +357,11 @@ func SettingsPage(e echo.Context) error {
 
 	// Settings data
 	data := struct {
-		Config *config.Config
+		Config   *config.Config
+		NextMail time.Time
 	}{
-		Config: a.Config,
+		Config:   a.Config,
+		NextMail: a.NextMail,
 	}
 
 	// Get the template path

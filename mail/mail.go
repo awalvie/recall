@@ -25,6 +25,9 @@ type Server struct {
 func (s *Server) Start(a *config.App) {
 	for {
 		// Run once a day
+		now := time.Now()
+		log.Println("next mail will be sent at", now.Add(24*time.Hour).Format("2006-01-02 15:04:05"))
+		a.NextMail = now.Add(24 * time.Hour)
 		time.Sleep(24 * time.Hour)
 
 		log.Println("starting mail server")
