@@ -79,5 +79,9 @@ func main() {
 
 	// Start HTTP server
 	log.Println("starting server on", addr)
-	e.Start(addr)
+
+	err = e.Start(addr)
+	if err != nil {
+		log.Fatalln("error starting server:", err)
+	}
 }
