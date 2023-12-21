@@ -4,7 +4,8 @@ todo
 FEATURES
 
 - [ ] Add settings page
-	- [ ] When will the next email be sent?
+	- [X] When will the next email be sent?
+		- Maybe show it on the idex page?
 	- [ ] What does the email template look like
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
