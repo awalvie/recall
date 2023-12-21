@@ -370,8 +370,6 @@ func SettingsPage(e echo.Context) error {
 		log.Println("error rendering template:", err)
 	}
 
-	log.Println(email.String())
-
 	// Settings data
 	data := struct {
 		Config *config.Config
