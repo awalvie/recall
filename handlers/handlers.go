@@ -1,13 +1,14 @@
 package handlers
 
 import (
+	"bytes"
 	"encoding/json"
-	"html/template"
 	"io"
 	"log"
 	"net/http"
 	"path/filepath"
 	"strconv"
+	"text/template"
 	"time"
 
 	"github.com/awalvie/recall/config"
@@ -357,18 +358,28 @@ func SettingsPage(e echo.Context) error {
 	// Get app config from the Context
 	a := e.Get("app").(*config.App)
 
-	// Settings data
-	data := struct {
-		Config *config.Config
-	}{
-		Config: a.Config,
-	}
-
 	// Get the template path
 	tpath := filepath.Join(a.Config.Dirs.Templates, "*")
 
 	// Parse the templates
 	t := template.Must(template.ParseGlob(tpath))
+
+	// Render the email template and store it in a variable
+	var email bytes.Buffer
+	if err := t.ExecuteTemplate(&email, "email", nil); err != nil {
+		log.Println("error rendering template:", err)
+	}
+
+	log.Println(email.String())
+
+	// Settings data
+	data := struct {
+		Config *config.Config
+		Email  string
+	}{
+		Config: a.Config,
+		Email:  email.String(),
+	}
 
 	// Render the templates
 	if err := t.ExecuteTemplate(e.Response().Writer, "settings", data); err != nil {

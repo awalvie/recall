@@ -3,10 +3,6 @@ todo
 
 FEATURES
 
-- [ ] Add settings page
-	- [X] When will the next email be sent?
-		- Maybe show it on the idex page?
-	- [ ] What does the email template look like
 - [ ] Add pagination to the contacts page
 - [ ] Some form of validation that the contact has been contacted
 - [ ] Show rendered email template on settings page
@@ -28,6 +24,10 @@ FIX
 
 DONE
 
+- [X] Add settings page
+	- [X] When will the next email be sent?
+		- [X] Maybe show it on the index page?
+	- [X] What does the email template look like
 - [X] Style edit-contact so it looks similar to contact
 - [X] Add page for editing contacts
 - [X] Make the buttons clickable on /contact/:id
