@@ -6,7 +6,7 @@ VERSION=0.0.1
 .PHONY: build
 ## build: Compile the packages.
 build:
-	@go build -o $(NAME) cmd/$(NAME).go
+	@CGO_ENABLED=1 go build -o $(NAME) cmd/$(NAME).go
 
 .PHONY: run
 ## run : Run the program
@@ -28,6 +28,11 @@ deps:
 watch:
 	@which reflex > /dev/null || (go install github.com/cespare/reflex@latest)
 	reflex -s -r '\.go$$' make run
+
+.PHONY: docker-build
+## docker-build: Build docker image
+docker-build:
+	@docker build -t $(NAME):$(VERSION) -f contrib/Dockerfile .
 
 .PHONY: help
 all: help
