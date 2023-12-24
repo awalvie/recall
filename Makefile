@@ -32,7 +32,7 @@ watch:
 .PHONY: docker-build
 ## docker-build: Build docker image
 docker-build:
-	@docker build -t $(NAME):$(VERSION) -f contrib/Dockerfile .
+	@docker build -t awalvie/$(NAME):$(VERSION) -f contrib/Dockerfile .
 
 .PHONY: help
 all: help

@@ -25,6 +25,8 @@ FIX
 
 DONE
 
+- [X] Push docker image to dockerhub
+- [X] Add Dockerfile
 - [X] Add settings page
 	- [X] When will the next email be sent?
 		- [X] Maybe show it on the index page?
