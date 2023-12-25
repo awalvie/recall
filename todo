@@ -17,6 +17,7 @@ REFACTOR
 
 FIX
 
+- [ ] Editing contact's dates does not update the fields
 - [ ] When the contact category is updated, automatically update the next contact date
 - [X] Updating a contact doesn't work
 - [X] When a new contact is created the LastContact date is set to 01-01-0001, basically
