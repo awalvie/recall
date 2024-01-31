@@ -3,6 +3,9 @@ VERSION=0.0.1
 
 .DEFAULT_GOAL := help
 
+# Go related variables.
+PLATFORMS   := linux/amd64
+
 .PHONY: build
 ## build: Compile the packages.
 build:
@@ -33,6 +36,17 @@ watch:
 ## docker-build: Build docker image
 docker-build:
 	@docker build -t awalvie/$(NAME):$(VERSION) -f contrib/Dockerfile .
+
+.PHONY: build-cross
+## build-cross: Build binaries for all platforms
+build-cross:
+	@for platform in $(PLATFORMS); do \
+        os=$$(echo $$platform | cut -f1 -d'/'); \
+        arch=$$(echo $$platform | cut -f2 -d'/'); \
+        echo "Building for $$os/$$arch..."; \
+        GOOS=$$os GOARCH=$$arch go build -o bin/$$os'_'$$arch/$(NAME) cmd/$(NAME).go; \
+    done
+
 
 .PHONY: help
 all: help
