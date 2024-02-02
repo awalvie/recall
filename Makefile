@@ -9,7 +9,7 @@ PLATFORMS   := linux/amd64
 .PHONY: build
 ## build: Compile the packages.
 build:
-	@CGO_ENABLED=1 go build -o $(NAME) cmd/$(NAME).go
+	@GOMAXPROCS=1 CGO_ENABLED=1 go build -o $(NAME) cmd/$(NAME).go
 
 .PHONY: run
 ## run : Run the program
