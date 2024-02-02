@@ -10,6 +10,7 @@ FEATURES
 
 REFACTOR
 
+- [ ] Make email and phone non-required
 - [ ] Make notes a separate table so that individual notes can be added per contact
 - [ ] Rename Contact -> Category to Frequency
 - [ ] Refactor code mail.Start into smaller functions

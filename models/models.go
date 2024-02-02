@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"net/mail"
 	"regexp"
 	"time"
@@ -26,15 +27,21 @@ func isEmailValid(e string) bool {
 }
 
 func (c *Contact) Validate() error {
-	// Check if email is valid
-	_, err := mail.ParseAddress(c.Email)
-	if err != nil {
-		return err
+	if c.Email != "" {
+		// Check if email is valid
+		_, err := mail.ParseAddress(c.Email)
+		if err != nil {
+			return err
+		}
+
 	}
 	// Check if phone is valid
-	re := regexp.MustCompile(`^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$`)
-	if !re.MatchString(c.Phone) {
-		return err
+	if c.Phone != "" {
+		re := regexp.MustCompile(`^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$`)
+		if !re.MatchString(c.Phone) {
+			return errors.New("Invalid phone number")
+		}
+
 	}
 	return nil
 }
