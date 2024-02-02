@@ -51,24 +51,24 @@ func (c *Contact) GetNextContactDate() time.Time {
 	if c.LastContact.IsZero() {
 		switch c.Category {
 		case "A":
-			nextContact = time.Now().AddDate(0, 0, 7)
+			nextContact = time.Now().AddDate(0, 0, 15)
 		case "B":
-			nextContact = time.Now().AddDate(0, 0, 21)
+			nextContact = time.Now().AddDate(0, 1, 0)
 		case "C":
-			nextContact = time.Now().AddDate(0, 0, 30)
+			nextContact = time.Now().AddDate(0, 2, 0)
 		case "D":
-			nextContact = time.Now().AddDate(0, 0, 90)
+			nextContact = time.Now().AddDate(0, 4, 0)
 		}
 	} else {
 		switch c.Category {
 		case "A":
-			nextContact = c.LastContact.AddDate(0, 0, 7)
+			nextContact = c.LastContact.AddDate(0, 0, 15)
 		case "B":
-			nextContact = c.LastContact.AddDate(0, 0, 21)
+			nextContact = c.LastContact.AddDate(0, 1, 0)
 		case "C":
-			nextContact = c.LastContact.AddDate(0, 0, 30)
+			nextContact = c.LastContact.AddDate(0, 2, 0)
 		case "D":
-			nextContact = c.LastContact.AddDate(0, 0, 90)
+			nextContact = c.LastContact.AddDate(0, 4, 0)
 		}
 	}
 	return nextContact
